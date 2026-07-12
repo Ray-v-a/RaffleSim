@@ -37,12 +37,11 @@ def calculate_winners(n_entries,n_winners):
   
 
 def get_winners(event=None):
-  set_button_busy(True)
-  n_entries = int(by_id("entries-input").value)
-  n_winners = int(by_id("number-winners-input").value)
-  winners_list=calculate_winners(n_entries,n_winners)
-  for i in range(len(winners_list)):
-    winners_list[i]+=1
-  set_text("result-output", str(winners_list))
-  finally:
-      set_button_busy(False)
+    set_button_busy(True)
+    n_entries = int(by_id("entries-input").value)
+    n_winners = int(by_id("number-winners-input").value)
+    winners_list=calculate_winners(n_entries,n_winners)
+    for i in range(len(winners_list)):
+        winners_list[i]+=1
+    set_text("result-output", str(winners_list))
+    set_button_busy(False)
