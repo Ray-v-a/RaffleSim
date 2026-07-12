@@ -26,7 +26,6 @@ def calculate_winners(n_entries, n_winners):
         raise ValueError("Number of winners cannot be negative.")
     if n_winners > n_entries:
         raise ValueError("Number of winners cannot exceed number of entries.")
-
     winners_list = random.choice(n_entries, size=n_winners, replace=False)
     return [int(winner) + 1 for winner in winners_list]
 
@@ -36,12 +35,9 @@ def get_winners(event=None):
     try:
         n_entries = int(by_id("entries-input").value)
         n_winners = int(by_id("number-winners-input").value)
-
         winners_list = calculate_winners(n_entries, n_winners)
         set_text("result-output", str(winners_list))
-
-    except ValueError as e:
+    except Exception as e:
         set_text("result-output", f"Error: {e}")
-
     finally:
         set_button_busy(False)
